@@ -5,17 +5,17 @@ import Logout from '../components/auth/Logout.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     component: Login
   },
   {
-    path: '/',
+    path: '/register',
     name: 'Register',
     component: Register
   },
   {
-    path: '/',
+    path: '/logout',
     name: 'Logout',
     component: Logout
   }
