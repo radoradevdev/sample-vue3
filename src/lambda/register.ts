@@ -1,28 +1,35 @@
 import { isValidEmail, isValidPass } from "../helpers/validators.helper";
 import { APIGatewayProxyEvent } from "aws-lambda";
-import * as jwt from "jsonwebtoken";
 import { SERVERERROR, SUCCESS } from "./constants/response-codes.constant";
 import { isValidRequestBody } from "./helpers/api.helper";
+import { connect, disconnect } from "./helpers/db.helper";
+import { User } from "./models/user.model";
 
-export async function handler(event: APIGatewayProxyEvent, _: any) {
-  if(event.httpMethod === 'POST' && isValidRequestBody(event.body)) {
-    const body = JSON.parse(event.body!);
-    let errors: string[] = [];
-    if(!isValidEmail(body.email)) {
-      errors.push("Wrong email!");
-    }
-    if(!isValidPass(body.password)) {
-      errors.push("Wrong password!");
-    }
-    if(errors.length == 0){
-      let token = jwt.sign({ email: body.email }, process.env.VUE_APP_JWT_SECRET!, { expiresIn: '1h' });
+export async function handler(event: APIGatewayProxyEvent) {
+  if (event.httpMethod === 'POST' && isValidRequestBody(event.body)) {
+    try {
+      const { email, password } = JSON.parse(event.body!);
+      if (!isValidEmail(email)) {
+        throw new Error("Wrong email!");
+      }
+      if (!isValidPass(password)) {
+        throw new Error("Wrong password!");
+      }
+      const db = await connect();
+      const doesUserExist = await db.collection('users').findOne({email: {$eq: 'sdsds'}});
+      if(doesUserExist === null)
+        throw new Error('User with this email already exists');
+
+      const user: User = { email: email, password: password };
+      await db.collection('users').insertOne(user); // save the user
       return {
         statusCode: SUCCESS,
-        body: JSON.stringify({token: token})
+        body: JSON.stringify({})
       };
-    }else {
+    } catch (e) {
       return {
-        statusCode: SERVERERROR
+        statusCode: SERVERERROR,
+        body: JSON.stringify({message: e.message})
       };
     }
   } else {

@@ -34,11 +34,10 @@ export default class Register extends Vue {
       return;
     }
     try {
-      let response = await axios.post('/register', {
+      await axios.post('/register', {
         email: this.email, password: this.password
       });
-      const { token } = response.data;
-      localStorage.setItem('token', token);
+      
       this.$router.push('login');
     } catch(e) {
       console.error(e);
