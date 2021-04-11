@@ -2,5 +2,8 @@ import axios from "axios"
 
 export default axios.create({
     baseURL: process.env.VUE_APP_LAMBDA_URL,
+    headers: {
+        Authorization: `Bearer ${localStorage.getItem('auth-token')}`
+    }
 });
     

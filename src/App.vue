@@ -1,11 +1,32 @@
 <template>
   <div id="nav">
-    <router-link to="/login">Login</router-link> |
-    <router-link to="/register">Register</router-link> |
-    <router-link to="/logout">Logout</router-link>
+    <router-link to="/login" v-if="!isLoggedIn">Login | </router-link>
+    <router-link to="/register" v-if="!isLoggedIn">Register</router-link>
+    <router-link to="/logout" v-if="isLoggedIn">Logout</router-link>
   </div>
   <router-view/>
 </template>
+
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
+import { RouteLocationNormalized } from 'vue-router';
+
+@Options({
+  props: {},
+  watch: {
+    $route(to: RouteLocationNormalized, from: RouteLocationNormalized) {
+      this.checkIsLoggedIn();
+    }
+  }
+})
+export default class App extends Vue {
+  isLoggedIn: boolean = localStorage.getItem('auth-token') ? true : false;
+
+  checkIsLoggedIn() {
+    this.isLoggedIn = localStorage.getItem('auth-token') ? true : false;
+  }
+}
+</script>
 
 <style lang="scss">
 #app {

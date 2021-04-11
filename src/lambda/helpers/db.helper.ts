@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+const MongoClient = require('mongodb').MongoClient;
 
 const client = new MongoClient(process.env.VUE_APP_ATLAS_CON_STRING!, { useUnifiedTopology: true });
 

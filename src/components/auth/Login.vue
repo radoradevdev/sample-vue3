@@ -18,8 +18,8 @@ import { isValidEmail } from '../../helpers/validators.helper';
   props: {}
 })
 export default class Login extends Vue {
-  email: string = 'rado@sd.sd';
-  password: string = 'sdsdsdsdsd';
+  email: string = 'rado@abv.bg';
+  password: string = 'Radoslav+radev013';
 
   errors: string[] = [];
 
@@ -31,7 +31,7 @@ export default class Login extends Vue {
       });
       const { token } = response.data;
       localStorage.setItem('auth-token', token);
-      this.$router.push('');
+      this.$router.push('/home');
     } catch(e) {
       console.error(e);
     }

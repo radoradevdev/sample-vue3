@@ -11,8 +11,10 @@ import { Options, Vue } from 'vue-class-component';
   }
 })
 export default class Logout extends Vue {
-  msg: string = process.env.VUE_APP_HELLO;
-  
+  mounted() {
+    localStorage.removeItem('auth-token');
+    this.$router.push('login');
+  }
 }
 </script>
 

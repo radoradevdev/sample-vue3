@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>Hello, {username}</h1>
-    <router-link to="/logout">Logout</router-link>
+    <h1>Hello</h1>
   </div>
 </template>
 
