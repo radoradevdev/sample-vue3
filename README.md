@@ -26,3 +26,6 @@ npm run build
 npm run test:unit
 ```
 
+### Strongly suggest to install MongoDb Atlas extension in VSCode.
+For the database you will only need one cluster with one collection inside, called users.
+
