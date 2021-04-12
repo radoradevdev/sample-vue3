@@ -1,4 +1,5 @@
 # sample-vue3
+https://sample-vue3.netlify.app/login
 
 This is a sample project written in Vue 3 with class-style components, typescript and Netlify functions for the backend. MondoDb Atlas is the database.
 ## Project setup
