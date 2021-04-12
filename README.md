@@ -1,16 +1,22 @@
 # sample-vue3
 
+This is a sample project written in Vue 3 with class-style components, typescript and Netlify functions for the backend. MondoDb Atlas is the database.
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+## In two terminals:
+### Frontend. Compiles and hot-reloads for development
 ```
 npm run serve
 ```
+#### Lambda. Compiles and hot-reloads for development
+```
+netlify-lambda serve src/lambda --config ./webpack.lambda.js
+```
 
-### Compiles and minifies for production
+### Frontend and Lambda. Compiles and minifies for production
 ```
 npm run build
 ```
@@ -20,5 +26,3 @@ npm run build
 npm run test:unit
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
