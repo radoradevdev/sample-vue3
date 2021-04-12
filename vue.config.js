@@ -3,7 +3,7 @@ module.exports = {
     proxy: {
       "/.netlify": {
         target: "http://localhost:9000",
-        pathRewrite: { "^/.netlify": "" }
+        pathRewrite: { [`^${process.env.VUE_APP_LAMBDA_URL}`]: "" }
       }
     }
   }
