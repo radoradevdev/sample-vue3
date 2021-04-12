@@ -18,8 +18,8 @@ import { isValidEmail } from '../../helpers/validators.helper';
   props: {}
 })
 export default class Login extends Vue {
-  email: string = 'rado@abv.bg';
-  password: string = 'Radoslav+radev013';
+  email: string = '';
+  password: string = '';
 
   errors: string[] = [];
 

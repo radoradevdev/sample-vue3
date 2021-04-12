@@ -18,8 +18,8 @@ import { isValidEmail, isValidPass } from '../../helpers/validators.helper';
   props: {}
 })
 export default class Register extends Vue {
-  email: string = 'rado@sd.sd';
-  password: string = 'sdsdsdsdsd';
+  email: string = '';
+  password: string = '';
 
   errors: string[] = [];
 
