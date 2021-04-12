@@ -30,3 +30,6 @@ npm run test:unit
 ### Strongly suggested to install MongoDb Atlas extension in VSCode.
 For the database you will only need one cluster with one collection inside, called users.
 
+### Rename .env to .env.local and put all your env keys there. Production keys should be in Netlify
+For the database you will only need one cluster with one collection inside, called users.
+
